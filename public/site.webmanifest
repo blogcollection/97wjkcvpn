@@ -1,0 +1,16 @@
+{
+  "name": "网际快车 - 全球网络加速服务",
+  "short_name": "网际快车",
+  "description": "网际快车提供高速、稳定、低延迟的全球网络连接体验，支持多地区节点、多设备客户端与影音使用场景。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0071E3",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+---
+import { SITE_CONFIG } from '../config/site';
+---
+
+<section id="pricing" class="py-20 sm:py-28 md:py-32 bg-[#F5F5F7] relative">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+      <div class="text-[13px] font-semibold text-[#0071E3] tracking-wider uppercase mb-3 reveal-item">
+        透明方案 · 灵活订阅
+      </div>
+      <h2 class="text-[32px] sm:text-[44px] md:text-[52px] font-semibold text-[#1D1D1F] tracking-tight leading-[1.12] mb-5 reveal-item">
+        选择适合你的套餐。
+      </h2>
+      <p class="text-[16px] sm:text-[18px] text-[#6E6E73] leading-relaxed reveal-item">
+        简单透明的方案，满足不同需求。所有套餐均提供高速稳定的全球网络加速服务。
+      </p>
+    </div>
+
+    <!-- Pricing Cards Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+      {SITE_CONFIG.pricing.map((tier, index) => (
+        <div class={`rounded-3xl p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 relative reveal-item ${
+          tier.isPopular 
+            ? 'bg-white border-2 border-[#0071E3] shadow-xl lg:-translate-y-2' 
+            : 'bg-white border border-black/[0.06] shadow-sm hover:shadow-md'
+        }`} style={`transition-delay: ${index * 80}ms;`}>
+          
+          {tier.isPopular && (
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#0071E3] text-white text-[12px] font-semibold tracking-wide shadow-sm">
+              最受欢迎
+            </div>
+          )}
+
+          <div>
+            <!-- Tier Header -->
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-[22px] font-semibold text-[#1D1D1F]">{tier.name}</h3>
+              <span class={`text-[12px] font-semibold px-2.5 py-0.5 rounded-full ${
+                tier.isPopular ? 'bg-blue-50 text-[#0071E3]' : 'bg-[#F5F5F7] text-[#6E6E73]'
+              }`}>
+                {tier.badge}
+              </span>
+            </div>
+
+            <p class="text-[14px] text-[#6E6E73] mb-6 min-h-[40px] leading-relaxed">
+              {tier.desc}
+            </p>
+
+            <!-- Price Display -->
+            <div class="flex items-baseline gap-1 mb-8 pb-8 border-b border-black/[0.06]">
+              <span class="text-[38px] sm:text-[44px] font-bold tracking-tight text-[#1D1D1F]">{tier.price}</span>
+              <span class="text-[15px] font-medium text-[#6E6E73]">{tier.period}</span>
+            </div>
+
+            <!-- Features List -->
+            <ul class="space-y-3.5 mb-8" aria-label={`${tier.name} 包含特性`}>
+              {tier.features.map((feat) => (
+                <li class="flex items-center gap-3 text-[14px] sm:text-[15px] text-[#1D1D1F]">
+                  <svg class={`w-4 h-4 shrink-0 ${tier.isPopular ? 'text-[#0071E3]' : 'text-emerald-600'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Action Button -->
+          <div>
+            <a
+              href={SITE_CONFIG.registerUrl}
+              target="_blank"
+              rel="nofollow sponsored noopener"
+              class={`w-full inline-flex items-center justify-center py-3.5 px-6 rounded-full text-[15px] font-medium transition-all duration-200 shadow-sm active:scale-95 ${
+                tier.isPopular
+                  ? 'bg-[#0071E3] hover:bg-[#0077ED] text-white shadow-blue-500/20 shadow-md'
+                  : 'bg-[#F5F5F7] hover:bg-[#E8E8ED] text-[#1D1D1F]'
+              }`}
+            >
+              {tier.ctaText}
+            </a>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Pricing Footnote -->
+    <div class="text-center mt-12 text-[13px] text-[#6E6E73] reveal-item">
+      更多定制方案与企业级大流量专线，请在登录用户中心后随时查阅。
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,70 @@
+---
+import { SITE_CONFIG } from '../config/site';
+---
+
+<section id="clients" class="py-20 sm:py-28 md:py-32 bg-white relative">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+      <div class="text-[13px] font-semibold text-[#0071E3] tracking-wider uppercase mb-3 reveal-item">
+        多终端全平台适配
+      </div>
+      <h2 class="text-[32px] sm:text-[44px] md:text-[52px] font-semibold text-[#1D1D1F] tracking-tight leading-[1.12] mb-5 reveal-item">
+        你的设备。<br />
+        <span class="text-[#6E6E73]">都可以连接。</span>
+      </h2>
+      <p class="text-[16px] sm:text-[18px] text-[#6E6E73] leading-relaxed reveal-item">
+        支持多种主流设备与客户端，根据服务提供的订阅链接一键导入与配置，随时随地开启畅连。
+      </p>
+    </div>
+
+    <!-- Devices Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
+      {SITE_CONFIG.devices.map((device, index) => (
+        <div class="p-6 rounded-3xl bg-[#F5F5F7] border border-black/[0.04] hover:bg-white hover:border-black/[0.08] hover:shadow-md transition-all duration-300 flex flex-col justify-between reveal-item" style={`transition-delay: ${index * 40}ms;`}>
+          <div>
+            <div class="w-10 h-10 rounded-2xl bg-white border border-black/[0.06] flex items-center justify-center text-[#1D1D1F] mb-4 shadow-xs">
+              {device.type === 'os' ? (
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              ) : (
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+              )}
+            </div>
+
+            <h3 class="text-[18px] font-semibold text-[#1D1D1F] mb-1">{device.name}</h3>
+            <p class="text-[13px] text-[#6E6E73]">{device.sub}</p>
+          </div>
+
+          <div class="mt-5 pt-3 border-t border-black/[0.04] flex items-center justify-between text-[11px] text-[#6E6E73]">
+            <span>{device.type === 'os' ? '通用系统支持' : '一键订阅导入'}</span>
+            <span class="text-[#0071E3] font-medium">即装即用</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA Box -->
+    <div class="text-center reveal-item">
+      <a
+        href={SITE_CONFIG.registerUrl}
+        target="_blank"
+        rel="nofollow sponsored noopener"
+        class="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-[15px] font-medium text-white bg-[#0071E3] hover:bg-[#0077ED] rounded-full transition-all duration-200 shadow-sm active:scale-95"
+      >
+        <span>立即开始使用</span>
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

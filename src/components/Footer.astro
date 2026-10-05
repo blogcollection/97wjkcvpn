@@ -1,0 +1,53 @@
+---
+import { SITE_CONFIG } from '../config/site';
+---
+
+<footer class="bg-[#F5F5F7] text-[#1D1D1F] border-t border-black/[0.08] pt-14 pb-12">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Top Footer Bar -->
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10 border-b border-black/[0.06]">
+      
+      <!-- Brand & Tagline -->
+      <div>
+        <div class="flex items-center gap-2 text-[#1D1D1F] font-bold text-[18px] mb-1.5">
+          <div class="w-6 h-6 rounded-md bg-[#0071E3] flex items-center justify-center text-white text-xs">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <span>{SITE_CONFIG.name}</span>
+        </div>
+        <p class="text-[13px] text-[#6E6E73]">
+          更简单的全球网络连接体验。
+        </p>
+      </div>
+
+      <!-- Footer Quick Navigation -->
+      <nav class="flex flex-wrap items-center gap-6 text-[13px] text-[#6E6E73]" aria-label="页脚导航">
+        <a href="#" class="hover:text-[#0071E3] transition-colors">首页</a>
+        <a href="#features" class="hover:text-[#0071E3] transition-colors">为什么选择我们</a>
+        <a href="#nodes" class="hover:text-[#0071E3] transition-colors">全球节点</a>
+        <a href="#pricing" class="hover:text-[#0071E3] transition-colors">套餐方案</a>
+        <a href="#clients" class="hover:text-[#0071E3] transition-colors">客户端支持</a>
+        <a href="#faq" class="hover:text-[#0071E3] transition-colors">常见问题</a>
+        <a href={SITE_CONFIG.registerUrl} target="_blank" rel="nofollow sponsored noopener" class="text-[#0071E3] font-medium hover:underline">立即注册</a>
+      </nav>
+
+    </div>
+
+    <!-- Bottom Disclaimer & Copyright -->
+    <div class="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[12px] text-[#6E6E73]">
+      
+      <p class="max-w-2xl leading-relaxed">
+        免责声明：网络服务实际体验可能因用户所在地区、当地运营商、线路状态、设备及第三方平台政策而有所不同。请合理合规使用网络资源。
+      </p>
+
+      <div class="shrink-0 text-[#6E6E73]">
+        © 2026 {SITE_CONFIG.name}. 保留所有权利。
+      </div>
+
+    </div>
+
+  </div>
+</footer>

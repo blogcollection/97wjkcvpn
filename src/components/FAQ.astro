@@ -1,0 +1,85 @@
+---
+import { SITE_CONFIG } from '../config/site';
+---
+
+<section id="faq" class="py-20 sm:py-28 md:py-32 bg-[#F5F5F7] relative">
+  <div class="max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
+      <div class="text-[13px] font-semibold text-[#0071E3] tracking-wider uppercase mb-3 reveal-item">
+        常见问题与解答
+      </div>
+      <h2 class="text-[32px] sm:text-[42px] font-semibold text-[#1D1D1F] tracking-tight leading-[1.12] mb-4 reveal-item">
+        有什么可以帮您？
+      </h2>
+      <p class="text-[16px] text-[#6E6E73] reveal-item">
+        了解更多关于网际快车的服务特性与使用细节。
+      </p>
+    </div>
+
+    <!-- Accordion List -->
+    <div class="space-y-4 reveal-item">
+      {SITE_CONFIG.faqs.map((faq, index) => (
+        <div class="bg-white rounded-2xl border border-black/[0.06] overflow-hidden transition-all duration-200">
+          <button
+            type="button"
+            class="faq-toggle-btn w-full px-6 py-5 text-left flex items-center justify-between gap-4 font-semibold text-[16px] sm:text-[17px] text-[#1D1D1F] hover:text-[#0071E3] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3]"
+            aria-expanded="false"
+            aria-controls={`faq-answer-${index}`}
+            id={`faq-btn-${index}`}
+          >
+            <span>{faq.q}</span>
+            <span class="faq-icon w-6 h-6 shrink-0 rounded-full bg-[#F5F5F7] flex items-center justify-center text-[#6E6E73] transition-transform duration-300">
+              <svg class="w-4 h-4 transition-transform duration-300 transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </span>
+          </button>
+          
+          <div
+            id={`faq-answer-${index}`}
+            role="region"
+            aria-labelledby={`faq-btn-${index}`}
+            class="faq-content hidden px-6 pb-6 pt-1 text-[14px] sm:text-[15px] text-[#6E6E73] leading-relaxed border-t border-black/[0.04]"
+          >
+            {faq.a}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Need More Help -->
+    <div class="text-center mt-12 reveal-item">
+      <p class="text-[14px] text-[#6E6E73]">
+        没有找到您需要的信息？欢迎登录用户中心联系在线客服。
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Pure JS Accordion Logic
+  const toggles = document.querySelectorAll('.faq-toggle-btn');
+
+  toggles.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      const contentId = btn.getAttribute('aria-controls');
+      const content = contentId ? document.getElementById(contentId) : null;
+      const icon = btn.querySelector('.faq-icon svg');
+
+      // Toggle current
+      if (isExpanded) {
+        btn.setAttribute('aria-expanded', 'false');
+        if (content) content.classList.add('hidden');
+        if (icon) icon.classList.remove('rotate-180');
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        if (content) content.classList.remove('hidden');
+        if (icon) icon.classList.add('rotate-180');
+      }
+    });
+  });
+</script>

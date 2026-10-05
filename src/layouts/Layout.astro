@@ -1,0 +1,248 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title = "网际快车｜高速稳定的全球网络连接服务",
+  description = "网际快车提供高速、稳定、低延迟的全球网络连接体验，支持多地区节点、多设备客户端与影音使用场景。",
+  canonical = "https://97.wjkcvpn.cfd/",
+} = Astro.props;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://97.wjkcvpn.cfd/#website",
+      "url": "https://97.wjkcvpn.cfd/",
+      "name": "网际快车",
+      "description": description,
+      "publisher": {
+        "@id": "https://97.wjkcvpn.cfd/#organization"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://97.wjkcvpn.cfd/#organization",
+      "name": "网际快车",
+      "url": "https://97.wjkcvpn.cfd/",
+      "logo": "https://97.wjkcvpn.cfd/favicon.svg"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://97.wjkcvpn.cfd/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "什么是网际快车？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "网际快车是一项面向全球的高速网络加速与节点连接服务，旨在为用户提供低延迟、高稳定性的跨地域网络优化体验，满足日常办公、跨境协作、学术资料查阅与影音娱乐等多种场景。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "网际快车支持哪些设备与客户端？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "全面支持 Windows、macOS、iOS (iPhone/iPad)、Android 操作系统，并兼容主流通用客户端（如 Clash、Shadowrocket、Sing-box 等），提供一键订阅和详尽配置指南。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "如何开始使用网际快车？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "点击网站上的“立即注册”按钮完成注册，进入用户中心选择适合您的套餐方案，随后获取订阅链接并导入至您所使用的客户端即可一键开启连接。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "有哪些节点地区可供选择？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "包含中国香港、中国台湾、日本、新加坡、美国等热门核心网络枢纽节点，骨干专线直连，智能路由自动优选最低延迟线路。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "连接速度与稳定性表现如何？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "采用高带宽优质专线与 BGP 多线接入架构，配合智能流量分流与动态负载均衡算法，无论高峰时段还是日常访问，均能保持低延迟与高连通率。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "是否支持主流海外影音与流媒体平台？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "支持主流海外流媒体与高清视频流畅访问（如 YouTube 4K/8K、Netflix、Disney+、Spotify 等）。部分节点提供针对性流媒体优化。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "使用过程中遇到连接问题怎么办？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "用户中心提供详尽的常见问题排查文档、在线工单与 7×24 小时客服技术支持，遇到任何疑问均可随时获得协助。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "如何查看和购买套餐？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "点击页面任一“查看套餐”或“立即购买”按钮，即可前往用户中心查看当前最新活动方案、周期折扣及具体套餐配置。"
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="zh-CN" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="网际快车, 机场, 机场推荐, 网络加速, 全球节点, 稳定机场, 高速节点, Clash, Shadowrocket, Windows, macOS, iPhone, Android" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="网际快车" />
+    <meta property="og:locale" content="zh_CN" />
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+
+    <!-- Favicon & PWA -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0071E3" />
+
+    <!-- Apple Web App -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="网际快车" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+    <style is:global>
+      /* Apple Minimalist Smooth Scroll & Typography */
+      :root {
+        --color-bg: #FFFFFF;
+        --color-section: #F5F5F7;
+        --color-text-main: #1D1D1F;
+        --color-text-sub: #6E6E73;
+        --color-accent: #0071E3;
+        --color-accent-hover: #0077ED;
+        --color-border: rgba(0, 0, 0, 0.08);
+      }
+
+      html {
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+
+      /* Anchor target offset for sticky nav */
+      section[id] {
+        scroll-margin-top: 80px;
+      }
+
+      /* Apple-styled Scroll Animations */
+      .reveal-item {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+
+      .reveal-item.revealed {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .reveal-item {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+        }
+        html {
+          scroll-behavior: auto !important;
+        }
+      }
+
+      /* Frosted Glass Utilities */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-white text-[#1D1D1F] flex flex-col selection:bg-blue-100 selection:text-blue-900">
+    <slot />
+
+    <script>
+      // Intersection Observer for Apple-like smooth reveal
+      document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px 0px -60px 0px',
+          threshold: 0.12,
+        };
+
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        const targets = document.querySelectorAll('.reveal-item');
+        targets.forEach((el) => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>

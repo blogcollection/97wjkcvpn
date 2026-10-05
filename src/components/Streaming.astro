@@ -1,0 +1,47 @@
+---
+import { SITE_CONFIG } from '../config/site';
+---
+
+<section class="py-20 sm:py-28 md:py-32 bg-[#F5F5F7] relative">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+      <div class="text-[13px] font-semibold text-[#0071E3] tracking-wider uppercase mb-3 reveal-item">
+        高清视听 · 畅快流媒体
+      </div>
+      <h2 class="text-[32px] sm:text-[44px] md:text-[52px] font-semibold text-[#1D1D1F] tracking-tight leading-[1.12] mb-5 reveal-item">
+        娱乐，<br />
+        <span class="text-[#6E6E73]">不该等待。</span>
+      </h2>
+      <p class="text-[16px] sm:text-[18px] text-[#6E6E73] leading-relaxed reveal-item">
+        更流畅的影音访问体验，让喜欢的内容保持顺畅播放，随时随地畅享视听盛宴。
+      </p>
+    </div>
+
+    <!-- Streaming Platform Matrix Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5 mb-10">
+      {SITE_CONFIG.streaming.map((item, index) => (
+        <div class="bg-white rounded-2xl p-5 border border-black/[0.05] shadow-xs flex flex-col justify-between items-center text-center hover:-translate-y-1 hover:shadow-md transition-all duration-300 reveal-item" style={`transition-delay: ${index * 50}ms;`}>
+          <span class="px-2 py-0.5 rounded-md bg-blue-50 text-[#0071E3] text-[10px] font-bold tracking-wide uppercase mb-3">
+            {item.badge}
+          </span>
+          
+          <div class="text-[18px] sm:text-[20px] font-bold text-[#1D1D1F] mb-1">
+            {item.name}
+          </div>
+
+          <p class="text-[12px] text-[#6E6E73] leading-snug">
+            {item.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Small Disclaimer Note -->
+    <div class="text-center text-[12px] text-[#6E6E73] max-w-xl mx-auto reveal-item">
+      注：部分节点支持主流流媒体访问，实际可用性可能因地区及第三方平台政策变化而有所不同。
+    </div>
+
+  </div>
+</section>

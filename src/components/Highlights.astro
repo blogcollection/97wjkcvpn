@@ -1,0 +1,44 @@
+---
+import { SITE_CONFIG } from '../config/site';
+---
+
+<section class="border-y border-black/[0.06] bg-white py-10 sm:py-12">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      {SITE_CONFIG.highlights.map((item, index) => (
+        <div class="flex items-center gap-3.5 sm:gap-4 p-2 reveal-item" style={`transition-delay: ${index * 80}ms`}>
+          <div class="w-11 h-11 sm:w-12 sm:h-12 shrink-0 rounded-2xl bg-blue-50/80 border border-blue-100/60 flex items-center justify-center text-[#0071E3]">
+            {item.icon === 'bolt' && (
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            )}
+            {item.icon === 'globe' && (
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            )}
+            {item.icon === 'play' && (
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            )}
+            {item.icon === 'headset' && (
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+              </svg>
+            )}
+          </div>
+
+          <div>
+            <h2 class="text-[15px] sm:text-[16px] font-semibold text-[#1D1D1F] tracking-tight">{item.title}</h2>
+            <p class="text-[12px] sm:text-[13px] text-[#6E6E73] mt-0.5 leading-snug">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

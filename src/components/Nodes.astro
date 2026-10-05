@@ -1,0 +1,88 @@
+---
+import { SITE_CONFIG } from '../config/site';
+---
+
+<section id="nodes" class="py-20 sm:py-28 md:py-32 bg-white relative">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+      <div class="text-[13px] font-semibold text-[#0071E3] tracking-wider uppercase mb-3 reveal-item">
+        全球核心网络枢纽
+      </div>
+      <h2 class="text-[32px] sm:text-[44px] md:text-[52px] font-semibold text-[#1D1D1F] tracking-tight leading-[1.12] mb-5 reveal-item">
+        世界很大，<br />
+        <span class="text-[#6E6E73]">连接可以很简单。</span>
+      </h2>
+      <p class="text-[16px] sm:text-[18px] text-[#6E6E73] leading-relaxed reveal-item">
+        精选亚太与欧美热门地区核心节点，智能选择最优线路，让连接更稳定、更快速。
+      </p>
+    </div>
+
+    <!-- Node Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {SITE_CONFIG.nodes.map((node, index) => (
+        <div class="bg-[#F5F5F7] rounded-3xl p-7 border border-black/[0.04] hover:border-black/[0.08] hover:shadow-md transition-all duration-300 flex flex-col justify-between group reveal-item" style={`transition-delay: ${index * 60}ms;`}>
+          <div>
+            <!-- Card Top: Name, Ping & Status -->
+            <div class="flex items-start justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-white border border-black/[0.06] flex items-center justify-center font-bold text-[14px] text-[#1D1D1F] shadow-xs">
+                  {node.name.slice(0, 2)}
+                </div>
+                <div>
+                  <h3 class="text-[18px] font-semibold text-[#1D1D1F] group-hover:text-[#0071E3] transition-colors">{node.name}</h3>
+                  <div class="text-[12px] text-[#6E6E73]">{node.tag}</div>
+                </div>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-[#0071E3] text-[11px] font-semibold">
+                {node.status}
+              </span>
+            </div>
+
+            <!-- Description -->
+            <p class="text-[14px] text-[#6E6E73] leading-relaxed mb-6">
+              {node.description}
+            </p>
+          </div>
+
+          <!-- Bottom: Latency & Direct Link Indicator -->
+          <div class="pt-4 border-t border-black/[0.05] flex items-center justify-between text-[12px]">
+            <div class="flex items-center gap-1.5 text-emerald-600 font-medium">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>平均延迟 ~ {node.ping}</span>
+            </div>
+            <span class="text-[#6E6E73]">全时段专线直连</span>
+          </div>
+        </div>
+      ))}
+
+      <!-- Special Feature Node Card: Global Multi-Cloud Mesh -->
+      <div class="bg-gradient-to-br from-[#1D1D1F] to-slate-900 text-white rounded-3xl p-7 flex flex-col justify-between shadow-lg reveal-item" style="transition-delay: 300ms;">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-10 h-10 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center text-white">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M2 12h20"></path>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full bg-white/15 text-white text-[11px] font-medium">全球容灾</span>
+          </div>
+
+          <h3 class="text-[20px] font-semibold text-white mb-2">50+ 节点持续扩展</h3>
+          <p class="text-[14px] text-white/70 leading-relaxed">
+            多机房动态容灾备份，任何单一线路故障均可在毫秒级自动切换至备用专线。
+          </p>
+        </div>
+
+        <div class="pt-6 border-t border-white/10 flex items-center justify-between text-[12px] text-white/60">
+          <span>动态 SLA 保障</span>
+          <span class="text-white font-medium">99.9% 连通率</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

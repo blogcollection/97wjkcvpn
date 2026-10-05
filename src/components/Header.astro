@@ -1,0 +1,111 @@
+---
+import { SITE_CONFIG } from '../config/site';
+---
+
+<header class="sticky top-0 z-50 w-full glass-nav transition-all duration-300">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a href="#" class="flex items-center gap-2 text-[#1D1D1F] font-semibold text-lg tracking-tight hover:opacity-85 transition-opacity" aria-label="网际快车 首页">
+      <div class="w-7 h-7 rounded-lg bg-[#0071E3] flex items-center justify-center text-white shadow-sm">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        </svg>
+      </div>
+      <span class="tracking-normal font-bold text-[17px]">{SITE_CONFIG.name}</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-7 text-[13px] text-[#1D1D1F]/80 font-normal tracking-tight" aria-label="主要导航">
+      {SITE_CONFIG.navLinks.map((link) => (
+        <a 
+          href={link.href} 
+          class="transition-colors hover:text-[#0071E3] text-[#1D1D1F]/75 py-1"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="flex items-center gap-3">
+      <a
+        href={SITE_CONFIG.registerUrl}
+        target="_blank"
+        rel="nofollow sponsored noopener"
+        class="inline-flex items-center justify-center px-4 py-1.5 text-[13px] font-medium text-white bg-[#0071E3] hover:bg-[#0077ED] rounded-full transition-all duration-200 shadow-sm active:scale-95"
+      >
+        立即注册
+      </a>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        class="md:hidden p-1.5 text-[#1D1D1F] rounded-lg hover:bg-black/5 transition-colors"
+        aria-label="打开菜单"
+        aria-expanded="false"
+        aria-controls="mobile-nav-panel"
+      >
+        <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-nav-panel" class="md:hidden hidden border-t border-black/[0.06] bg-white/95 backdrop-blur-xl px-6 py-5 shadow-lg">
+    <nav class="flex flex-col gap-4 text-[15px] font-medium text-[#1D1D1F]" aria-label="移动端导航">
+      {SITE_CONFIG.navLinks.map((link) => (
+        <a 
+          href={link.href} 
+          class="mobile-nav-link text-[#1D1D1F]/80 hover:text-[#0071E3] transition-colors py-1"
+        >
+          {link.label}
+        </a>
+      ))}
+      <div class="pt-3 border-t border-black/[0.06]">
+        <a
+          href={SITE_CONFIG.registerUrl}
+          target="_blank"
+          rel="nofollow sponsored noopener"
+          class="w-full inline-flex items-center justify-center px-5 py-2.5 text-[14px] font-medium text-white bg-[#0071E3] hover:bg-[#0077ED] rounded-xl transition-all shadow-sm text-center"
+        >
+          立即注册网际快车
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const panel = document.getElementById('mobile-nav-panel');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+  const links = document.querySelectorAll('.mobile-nav-link');
+
+  if (btn && panel && iconOpen && iconClose) {
+    const toggleMenu = () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      panel.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    };
+
+    btn.addEventListener('click', toggleMenu);
+
+    // Close when clicking links
+    links.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (!panel.classList.contains('hidden')) {
+          toggleMenu();
+        }
+      });
+    });
+  }
+</script>
